@@ -21,9 +21,9 @@ const pluginHandler = async options => {
           return match;
         });
       }
-      if(element.panelName === 'index.vue') {
-        element.panelValue = element.panelValue.replace('index.response.css', 'index.css');
-      }
+      // if(element.panelName === 'index.vue') {
+      //   element.panelValue = element.panelValue.replace('index.response.css', 'index.css');
+      // }
     });
   }
   return { data, filePath, config };
