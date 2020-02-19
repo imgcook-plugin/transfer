@@ -4,7 +4,8 @@
   "description": "plugin template",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=text mocha test/__test__.js"
+    "test": "nyc --reporter=text mocha test/__test__.js",
+    "dev": "node ./index.js"
   },
   "repository": {
     "type": "git",
