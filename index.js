@@ -11,7 +11,7 @@ const pluginHandler = async options => {
   if(Array.isArray(data.code.panelDisplay)) {
     data.code.panelDisplay = [...data.code.panelDisplay.map(element => {
       // const reg = /(\d+\.([0-9]{0,2})px)|(\d+px)/g;
-      const reg = /(^\d+\.([0-9]{0,2})px$)|(^\d+px$)/g;
+      const reg = /(\d+\.([0-9]{0,2})px)|(\d+px)/g;
       // if(element.panelName === 'style.js') {
       if(element.panelName === 'index.css') {
         element.panelValue = element.panelValue.replace(reg, function (match,param,offset,string) {
@@ -27,7 +27,6 @@ const pluginHandler = async options => {
       return element;
     })];
   }
-  console.log('嘻嘻嘻', data.code.panelDisplay);
   return { data, filePath, config };
 };
 
