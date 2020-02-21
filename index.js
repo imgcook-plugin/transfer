@@ -24,8 +24,8 @@ const pluginHandler = async options => {
       if(element.panelName === 'index.vue') {
         element.panelValue = element.panelValue.replace('index.response.css', 'index.css');
       }
+      return element;
     });
-    return element;
   }
   return { data, filePath, config };
 };
