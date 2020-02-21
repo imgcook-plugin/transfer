@@ -27,6 +27,7 @@ const pluginHandler = async options => {
       return element;
     })];
   }
+  console.log('嘻嘻嘻', data.code.panelDisplay);
   return { data, filePath, config };
 };
 
