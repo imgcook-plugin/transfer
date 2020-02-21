@@ -9,7 +9,7 @@
 const pluginHandler = async options => {
   let { data, filePath, config  } = options;
   if(Array.isArray(data.code.panelDisplay)) {
-    data.code.panelDisplay.forEach(element => {
+    data.code.panelDisplay = data.code.panelDisplay.map(element => {
       // const reg = /(\d+\.([0-9]{0,2})px)|(\d+px)/g;
       const reg = /(^\d+\.([0-9]{0,2})px$)|(^\d+px$)/g;
       // if(element.panelName === 'style.js') {
@@ -25,6 +25,7 @@ const pluginHandler = async options => {
         element.panelValue = element.panelValue.replace('index.response.css', 'index.css');
       }
     });
+    return element;
   }
   return { data, filePath, config };
 };
