@@ -24,7 +24,7 @@ const pluginHandler = async options => {
             
             const needPath = path.resolve().indexOf('src') > -1 ?  path.resolve().split('src')[0] : path.resolve();
             console.log('嘻嘻嘻', path.resolve(needPath, filePaths));
-            if(!fs.existsSync(path.resolve(needPath, filePaths))) {
+            if(!fs.exists(path.resolve(needPath, filePaths))) {
               return match;
             }
             loadToLocal(match, data.moduleData.id, `${data.moduleData.id}_${string}${path.extname(match)}`);
