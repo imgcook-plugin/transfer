@@ -16,7 +16,8 @@ const pluginHandler = async options => {
   if(Array.isArray(data.code.panelDisplay)) {
     data.code.panelDisplay = [...data.code.panelDisplay.map(element => {
       // const reg = /(\d+\.([0-9]{0,2})px)|(\d+px)/g;
-      const imgReg = /(https?):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|](\.png|\.jpg)/g
+      const imgReg = /(https?):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|](\.png|\.jpg)/g;
+      const reqReg = /\'require\(\'[&@#/%?=~_A-Za-z0-9]*(\.png|\.jpg)\'\)\'/g;
       if(element.panelName === 'index.vue') {
         element.panelValue = 
           element.panelValue.replace(imgReg, function (match,param,offset,string) {
@@ -24,13 +25,14 @@ const pluginHandler = async options => {
             
             const needPath = path.resolve().indexOf('src') > -1 ?  path.resolve().split('src')[0] : path.resolve();
             console.log('嘻嘻嘻', path.resolve(needPath, filePaths));
-            if(!fs.exists(path.resolve(needPath, filePaths))) {
+            if(!fs.existsSync(path.resolve(needPath, filePaths))) {
               return match;
             }
             loadToLocal(match, data.moduleData.id, `${data.moduleData.id}_${string}${path.extname(match)}`);
             return `require('@images/${data.moduleData.id}/${data.moduleData.id}_${string}${path.extname(match)}')`;
-          });
-        }
+          }).replace(reqReg, function(match) {
+            return match.slice(1,match.length-1);
+          })
       // if(element.panelName === 'index.css') {
       //   element.panelValue = element.panelValue.replace(reg, function (match,param,offset,string) {
       //     if(!isNaN(Number(match.replace('px', '')))) {
@@ -43,8 +45,9 @@ const pluginHandler = async options => {
       //   element.panelValue = element.panelValue.replace('index.response.css', 'index.css');
       // }
       return element;
-    })];
+    }})];
   }
+  console.log(data.code);
   return { data, filePath, config };
 };
 
