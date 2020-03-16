@@ -20,11 +20,11 @@ const pluginHandler = async options => {
       if(element.panelName === 'index.vue') {
         element.panelValue = 
           element.panelValue.replace(imgReg, function (match,param,offset,string) {
-            // console.log(result);
             // 如果不存在根文件夹，则直接返回url
-            console.log(path.resolve());
-            if(!fs.existsSync(path.resolve(filePaths))) {
-              // fs.mkdirSync(filePath);
+            
+            const needPath = path.resolve().indexOf('src') > -1 ?  path.resolve().split('src')[0] : path.resolve();
+            console.log('嘻嘻嘻', path.resolve(needPath, filePaths));
+            if(!fs.existsSync(path.resolve(needPath, filePaths))) {
               return match;
             }
             loadToLocal(match, data.moduleData.id, `${data.moduleData.id}_${string}${path.extname(match)}`);
