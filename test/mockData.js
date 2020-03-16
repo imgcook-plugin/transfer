@@ -43,11 +43,11 @@ module.exports = {
           '    return {\n' +
           '      constants: {\n' +
           '        image1:\n' +
-          "          './images/img_22467_0_0.png',\n" +
+          "          'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/3b2f3d40645911ea99b41b9b9d9036bb.png',\n" +
           '        image2:\n' +
-          "          './images/img_22467_0_1.png',\n" +
+          "          'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/3b6652d0645911eab9d2f5d4d2e871e2.png',\n" +
           '        image3:\n' +
-          "          './images/img_22467_0_2.png'\n" +
+          "          'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/1db8cb80645111eaa4e56392471ce18b.png'\n" +
           '      }\n' +
           '    };\n' +
           '  },\n' +
