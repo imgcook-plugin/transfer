@@ -22,7 +22,8 @@ const pluginHandler = async options => {
           element.panelValue.replace(imgReg, function (match,param,offset,string) {
             // console.log(result);
             // 如果不存在根文件夹，则直接返回url
-            if(!fs.existsSync(filePaths)) {
+            console.log(path.resolve());
+            if(!fs.existsSync(path.resolve(filePaths))) {
               // fs.mkdirSync(filePath);
               return match;
             }
