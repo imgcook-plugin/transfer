@@ -23,7 +23,6 @@ const pluginHandler = async options => {
           element.panelValue = element.panelValue
             .replace(imgReg, function(match, param, offset, string) {
               // 如果不存在根文件夹，则直接返回url
-
               const needPath =
                 path.resolve().indexOf('src') > -1
                   ? path.resolve().split('src')[0]
@@ -60,9 +59,9 @@ const pluginHandler = async options => {
           });
         }
 
-        if(element.panelName === 'index.vue') {
-            element.panelValue = element.panelValue.replace('index.response.css', 'index.css');
-        }
+        // if(element.panelName === 'index.vue') {
+        //     element.panelValue = element.panelValue.replace('index.response.css', 'index.css');
+        // }
         return element;
       })
     ];
