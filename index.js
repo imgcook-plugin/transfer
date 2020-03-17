@@ -45,9 +45,6 @@ const pluginHandler = async options => {
             .replace(reqReg, function(match) {
               return match.slice(1, match.length - 1);
             });
-          // if(element.panelName === 'index.vue') {
-          //   element.panelValue = element.panelValue.replace('index.response.css', 'index.css');
-          // }
         }
         if (element.panelName === 'index.css') {
           element.panelValue = element.panelValue.replace(reg, function(
@@ -61,6 +58,10 @@ const pluginHandler = async options => {
             }
             return match;
           });
+        }
+
+        if(element.panelName === 'index.vue') {
+            element.panelValue = element.panelValue.replace('index.response.css', 'index.css');
         }
         return element;
       })

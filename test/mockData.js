@@ -54,7 +54,7 @@ module.exports = {
           '  methods: {}\n' +
           '};\n' +
           '</script>\n' +
-          '<style src="./index.css" />\n',
+          '<style src="./index.response.css" />\n',
         "panelType": 'vue'
       },
       {
