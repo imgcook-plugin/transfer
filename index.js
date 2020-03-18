@@ -45,23 +45,23 @@ const pluginHandler = async options => {
               return match.slice(1, match.length - 1);
             });
         }
-        if (element.panelName === 'index.css') {
-          element.panelValue = element.panelValue.replace(reg, function(
-            match,
-            param,
-            offset,
-            string
-          ) {
-            if (!isNaN(Number(match.replace('rem', '')))) {
-              return `${Number(match.replace('rem', '')) * 100}px`;
-            }
-            return match;
-          });
-        }
-
-        // if(element.panelName === 'index.vue') {
-        //     element.panelValue = element.panelValue.replace('index.response.css', 'index.css');
+        // if (element.panelName === 'index.css') {
+        //   element.panelValue = element.panelValue.replace(reg, function(
+        //     match,
+        //     param,
+        //     offset,
+        //     string
+        //   ) {
+        //     if (!isNaN(Number(match.replace('rem', '')))) {
+        //       return `${Number(match.replace('rem', '')) * 100}px`;
+        //     }
+        //     return match;
+        //   });
         // }
+
+        if(element.panelName === 'index.vue') {
+            element.panelValue = element.panelValue.replace('index.css', 'index.scss');
+        }
         return element;
       })
     ];
