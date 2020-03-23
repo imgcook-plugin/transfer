@@ -27,7 +27,7 @@ const pluginHandler = async options => {
               filePath.indexOf('src') > -1
                   ? filePath.split('src')[0]
                   : filePath;
-              console.log('当前目录：', path.resolve(needPath, filePaths));
+              // console.log('当前目录：', path.resolve(needPath, filePaths));
               // if (!fs.existsSync(path.resolve(needPath, filePaths))) {
               //   return match;
               // }
@@ -39,13 +39,19 @@ const pluginHandler = async options => {
               // if (!fs.existsSync(path.resolve(needPath, filePaths))) {
               //   return match;
               // }
-              return "'require('@images/a.png')'";
+              // console.log(match, `${filePath}/${data.moduleData.id}`);
               loadToLocal(
                 match,
-                `${path.resolve(needPath, filePaths)}/${data.moduleData.id}`,
+                `${filePath}/${data.moduleData.id}`,
                 `${data.moduleData.id}`,
                 `${data.moduleData.id}_${string}${path.extname(match)}`
               );
+              // loadToLocal(
+              //   match,
+              //   `${path.resolve(needPath, filePaths)}/${data.moduleData.id}`,
+              //   `${data.moduleData.id}`,
+              //   `${data.moduleData.id}_${string}${path.extname(match)}`
+              // );
               return `require('@images/${
                 data.moduleData.id
               }/${data.moduleData.id}_${string}${path.extname(match)}')`;
