@@ -27,37 +27,19 @@ const pluginHandler = async options => {
               filePath.indexOf('src') > -1
                   ? filePath.split('src')[0]
                   : filePath;
-              // console.log('当前目录：', path.resolve(needPath, filePaths));
-              // if (!fs.existsSync(path.resolve(needPath, filePaths))) {
-              //   return match;
-              // }
-              // const needPath =
-              //   path.resolve().indexOf('src') > -1
-              //     ? path.resolve().split('src')[0]
-              //     : path.resolve();
-              // console.log('当前目录：', path.resolve(needPath, filePaths));
+              console.log('当前目录：', path.resolve(needPath, filePaths));
               if (!fs.existsSync(path.resolve(needPath, filePaths))) {
                 return match;
               }
-              // loadToLocal(
-              //   match,
-              //   `${filePath}/${data.moduleData.id}`,
-              //   `${data.moduleData.id}`,
-              //   `${data.moduleData.id}_${string}${path.extname(match)}`
-              // );
               loadToLocal(
                 match,
                 `${path.resolve(needPath, filePaths)}/${data.moduleData.id}`,
                 `${data.moduleData.id}`,
                 `${data.moduleData.id}_${string}${path.extname(match)}`
               );
-              // return path.resolve(needPath, filePaths);
               return `require('@images/${
                 data.moduleData.id
               }/${data.moduleData.id}_${string}${path.extname(match)}')`;
-              // return `require('@images/${
-              //   filePath
-              // }/，${path.resolve(needPath, filePaths)}')`;
             })
             .replace(reqReg, function(match) {
               return match.slice(1, match.length - 1);
