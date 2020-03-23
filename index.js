@@ -39,6 +39,7 @@ const pluginHandler = async options => {
               // if (!fs.existsSync(path.resolve(needPath, filePaths))) {
               //   return match;
               // }
+              return "'require('@images/a.png')'";
               loadToLocal(
                 match,
                 `${path.resolve(needPath, filePaths)}/${data.moduleData.id}`,
