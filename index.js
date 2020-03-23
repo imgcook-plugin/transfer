@@ -13,7 +13,6 @@ const filePaths = './src/resources/images';
 
 const pluginHandler = async options => {
   let { data, filePath, config } = options;
-  console.log('嘻嘻嘻', filePath);
   if (Array.isArray(data.code.panelDisplay)) {
     data.code.panelDisplay = [
       ...data.code.panelDisplay.map(element => {
@@ -29,9 +28,9 @@ const pluginHandler = async options => {
                   ? filePath.split('src')[0]
                   : filePath;
               console.log('当前目录：', path.resolve(needPath, filePaths));
-              if (!fs.existsSync(path.resolve(needPath, filePaths))) {
-                return match;
-              }
+              // if (!fs.existsSync(path.resolve(needPath, filePaths))) {
+              //   return match;
+              // }
               // const needPath =
               //   path.resolve().indexOf('src') > -1
               //     ? path.resolve().split('src')[0]
