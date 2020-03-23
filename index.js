@@ -51,10 +51,13 @@ const pluginHandler = async options => {
                 `${data.moduleData.id}`,
                 `${data.moduleData.id}_${string}${path.extname(match)}`
               );
-              return path.resolve(needPath, filePaths);
+              // return path.resolve(needPath, filePaths);
               // return `require('@images/${
               //   data.moduleData.id
               // }/${data.moduleData.id}_${string}${path.extname(match)}')`;
+              return `require('@images/${
+                filePath
+              }/，${path.resolve(needPath, filePaths)}')`;
             })
             .replace(reqReg, function(match) {
               return match.slice(1, match.length - 1);
