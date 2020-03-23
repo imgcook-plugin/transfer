@@ -13,6 +13,7 @@ const filePaths = './src/resources/images';
 
 const pluginHandler = async options => {
   let { data, filePath, config } = options;
+  console.log('嘻嘻嘻', filePath);
   if (Array.isArray(data.code.panelDisplay)) {
     data.code.panelDisplay = [
       ...data.code.panelDisplay.map(element => {
@@ -24,13 +25,21 @@ const pluginHandler = async options => {
             .replace(imgReg, function(match, param, offset, string) {
               // 如果不存在根文件夹，则直接返回url
               const needPath =
-                path.resolve().indexOf('src') > -1
-                  ? path.resolve().split('src')[0]
-                  : path.resolve();
+              filePath.indexOf('src') > -1
+                  ? filePath.split('src')[0]
+                  : filePath;
               console.log('当前目录：', path.resolve(needPath, filePaths));
               if (!fs.existsSync(path.resolve(needPath, filePaths))) {
                 return match;
               }
+              // const needPath =
+              //   path.resolve().indexOf('src') > -1
+              //     ? path.resolve().split('src')[0]
+              //     : path.resolve();
+              // console.log('当前目录：', path.resolve(needPath, filePaths));
+              // if (!fs.existsSync(path.resolve(needPath, filePaths))) {
+              //   return match;
+              // }
               loadToLocal(
                 match,
                 `${path.resolve(needPath, filePaths)}/${data.moduleData.id}`,
